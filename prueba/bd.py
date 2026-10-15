@@ -171,6 +171,9 @@ class ProyectoDAO(DAOBase):
 
 
 class RegistroTiempoDAO(DAOBase):
+    def listar(self):
+        return self._ejecutar("SELECT * FROM registro_tiempo ORDER BY fecha").fetchall()
+
     def insertar(self, horas, fecha, descripcion, id_unico, id_proyecto):
         return self._ejecutar(
             """INSERT INTO registro_tiempo (horas, fecha, descripcion, id_unico, id_proyecto)
